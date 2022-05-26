@@ -1586,9 +1586,9 @@ near-sandbox@^0.0.8:
     got "^11.8.2"
     tar "^6.1.0"
 
-near-sdk-js@0.1.1:
+near-sdk-js@^0.1.1:
   version "0.1.1"
-  resolved "https://registry.yarnpkg.com/near-sdk-js/-/near-sdk-js-0.1.1.tgz#3faf8823b2ce5a1ec96c40617ab8c6eb3274a555"
+  resolved "https://registry.npmjs.org/near-sdk-js/-/near-sdk-js-0.1.1.tgz#3faf8823b2ce5a1ec96c40617ab8c6eb3274a555"
   integrity sha512-XjpJhyuQirdIxPHfxAwCEkn4CA+HSnJ9FmEfBNNUjJS12yMZrnGB7zITPJkHiVbRWiFTNVF3HDa5mrLZxGdqtQ==
   dependencies:
     "@babel/core" "^7.17.5"
