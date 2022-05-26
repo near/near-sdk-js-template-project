@@ -4,13 +4,14 @@ jobs:
   workflows:
     strategy:
       matrix:
-        platform: [ubuntu-latest]
+        platform: [ubuntu-latest, macos-latest]
+        node_version: ["14", "15", "16", "17", "18"]
     runs-on: ${{ matrix.platform }}
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v2
         with:
-          node-version: "16"
+          node-version: ${{ matrix.node_version }}
       - name: Install modules
         run: yarn
       - name: Build contract
