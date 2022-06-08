@@ -1584,10 +1584,10 @@ near-sandbox@^0.0.8:
     got "^11.8.2"
     tar "^6.1.0"
 
-near-sdk-js@^0.2.0:
-  version "0.2.0"
-  resolved "https://registry.npmjs.org/near-sdk-js/-/near-sdk-js-0.2.0.tgz#412914d08b2221b9b400ae846cebebc752f1bc75"
-  integrity sha512-PowwZI5/yaecF7MtYYB4HDkkyuxw3GwbxjecL5DnZtacIww4K72hXwsxsdmv2JIYJUiIFReKeX55y90gtiFsmw==
+near-sdk-js@^0.3.0:
+  version "0.3.0"
+  resolved "https://registry.npmjs.org/near-sdk-js/-/near-sdk-js-0.3.0.tgz#ba3ba983c0a41d329ff675db51d8544fd7f02c39"
+  integrity sha512-L5rt//CWxPqZEnWweHiAvoi1N7ucX3jBB7cKLCLja5n7pMez4HnHnMtVv1uidAC7hSnTIiWI4xoRFA+IAjh8YQ==
   dependencies:
     "@babel/core" "^7.17.5"
     "@babel/plugin-proposal-decorators" "^7.17.2"
