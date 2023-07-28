@@ -11,11 +11,11 @@
   "author": "Near Inc <hello@nearprotocol.com>",
   "license": "Apache-2.0",
   "dependencies": {
-    "near-sdk-js": "^0.4.0-2",
+    "near-sdk-js": "^1.0.0",
     "lodash-es": "^4.17.21"
   },
   "devDependencies": {
     "ava": "^4.2.0",
-    "near-workspaces": "^2.0.0"
+    "near-workspaces": "^3.3.0"
   }
 }
