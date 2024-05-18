@@ -1,9 +1,10 @@
 import { Worker } from 'near-workspaces';
 import test from 'ava';
+import process from "process";
 
 test.beforeEach(async t => {
     // Init the worker and start a Sandbox server
-    const worker = await Worker.init({network: 'testnet', rootAccountId: 'counter'});
+    const worker = await Worker.init({network: 'testnet', rootAccountId: 'counter', initialBalance: "12 N"});
 
     // Prepare sandbox for tests, create accounts, deploy contracts, etc.
     const root = worker.rootAccount;
@@ -22,9 +23,11 @@ test.beforeEach(async t => {
 // If the environment is reused, use test.after to replace test.afterEach
 test.afterEach(async t => {
     const { root, counter, ali, bob } = t.context.accounts;
-    await counter.delete(root.accountId);
-    await ali.delete(root.accountId);
-    await bob.delete(root.accountId);
+    const masterAcc = process.env.TESTNET_MASTER_ACCOUNT_ID;
+    await root.delete(masterAcc);
+    await counter.delete(masterAcc);
+    await ali.delete(masterAcc);
+    await bob.delete(masterAcc);
     await t.context.worker.tearDown().catch(error => {
         console.log('Failed to tear down the worker:', error);
     });
