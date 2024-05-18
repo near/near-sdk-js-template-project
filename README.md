@@ -9,7 +9,23 @@ npm i
 npm run build
 ```
 
-# Run tests
+# Run tests on local node
 ```
-npm run test
+npm run test:template
+```
+
+# Run tests on testnet
+save 
+```shell
+echo "your testnet master account wallet" >> .near-credentials/workspaces/testnet/'$TESTNET_MASTER_ACCOUNT_ID'.json
+```
+
+```shell
+TESTNET_MASTER_ACCOUNT_ID='your master account id' npm run test:testnetdeploy
+```
+current master account run by ci on testnet is [templateprojectmaster.testnet](https://testnet.nearblocks.io/address/templateprojectmaster.testnet)
+
+# in gitlab ci, the testnet master account's secret is reserve on git secrets: https://docs.github.com/en/actions/security-guides/using-secrets-in-github-actions
+```shell
+
 ```
