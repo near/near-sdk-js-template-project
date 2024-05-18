@@ -8,7 +8,7 @@ test.beforeEach(async t => {
     // Prepare sandbox for tests, create accounts, deploy contracts, etc.
     const root = worker.rootAccount;
     // Deploy the clean-state contract.
-    const counter = await root.devDeploy('./build/contract.wasm');
+    const counter = await root.devDeploy('./build/contract.wasm', {initialBalance: "6000000000000000000000000"});
 
     // Test users
     const ali = await root.createSubAccount('ali', {initialBalance : "1000000000000000000000000"});
@@ -21,6 +21,10 @@ test.beforeEach(async t => {
 
 // If the environment is reused, use test.after to replace test.afterEach
 test.afterEach(async t => {
+    const { root, counter, ali, bob } = t.context.accounts;
+    await counter.delete(root.accountId);
+    await ali.delete(root.accountId);
+    await bob.delete(root.accountId);
     await t.context.worker.tearDown().catch(error => {
         console.log('Failed to tear down the worker:', error);
     });
