@@ -8,11 +8,11 @@ test.beforeEach(async t => {
     // Prepare sandbox for tests, create accounts, deploy contracts, etc.
     const root = worker.rootAccount;
     // Deploy the clean-state contract.
-    const counter = await root.devDeploy('./build/contract.wasm', {initialBalance: "6000000000000000000000000"});
+    const counter = await root.devDeploy('./build/contract.wasm', {initialBalance: "6 N"});
 
     // Test users
-    const ali = await root.createSubAccount('ali', {initialBalance : "1000000000000000000000000"});
-    const bob = await root.createSubAccount('bob', {initialBalance : "1000000000000000000000000"});
+    const ali = await root.createSubAccount('ali', {initialBalance : "1 N"});
+    const bob = await root.createSubAccount('bob', {initialBalance : "1 N"});
 
     // Save state for test runs
     t.context.worker = worker;
