@@ -6,7 +6,8 @@
   "type": "module",
   "scripts": {
     "build": "near-sdk-js build",
-    "test": "ava"
+    "test:template": "ava ./__tests__/test-template.ava.js",
+    "test:testnetdeploy": "TESTNET_MASTER_ACCOUNT_ID='templateprojectmaster.testnet' ava ./__tests__/test-testnet-dev-deploy.ava.js"
   },
   "author": "Near Inc <hello@nearprotocol.com>",
   "license": "Apache-2.0",
