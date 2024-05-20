@@ -22,6 +22,10 @@ jobs:
         env:
           TESTNET_MASTER_ACCOUNT_WALLET: ${{ secrets.TestnetMasterAccountWallet }}
         run: echo "$TESTNET_MASTER_ACCOUNT_WALLET" >> .near-credentials/workspaces/testnet/templateprojectmaster.testnet.json
+      - name: Show var
+        run: echo "$TESTNET_MASTER_ACCOUNT_WALLET"
+      - name: Show var2
+        run: cat .near-credentials/workspaces/testnet/templateprojectmaster.testnet.json
       - name: Run ci tests
         run: yarn testci
 
