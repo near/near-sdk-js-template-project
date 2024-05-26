@@ -22,6 +22,7 @@
   },
   "devDependencies": {
     "ava": "^4.2.0",
-    "near-workspaces": "^3.3.0"
+    "near-workspaces": "^3.3.0",
+    "near-cli": "^4.0.13"
   }
 }

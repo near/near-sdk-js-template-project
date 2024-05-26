@@ -32,11 +32,6 @@ current master account run by ci on testnet is [templateprojectmaster.testnet](h
 
 # testnet deploy use near-cli
 This test script will create accounts with faucet to deploy and call contract
-* prerequisite
-deploy `near-cli` with lastest version `4.0.13`, if your `near-cli` version is `3.y.z`, you also need to upgrade `near-cli` by the following command: 
-```shell
-npm install -g near-cli
-```
 * run test shell
 ```shell
 npm run test:clidevdeploy
