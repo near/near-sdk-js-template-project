@@ -4,7 +4,7 @@ import process from "process";
 
 test.beforeEach(async t => {
     // Init the worker and start a Sandbox server
-    const worker = await Worker.init({network: 'testnet', rootAccountId: 'counter', initialBalance: "12 N"});
+    const worker = await Worker.init({network: 'testnet'});
 
     // Prepare sandbox for tests, create accounts, deploy contracts, etc.
     const root = worker.rootAccount;
