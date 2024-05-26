@@ -28,6 +28,8 @@ jobs:
         run: cat .near-credentials/workspaces/testnet/templateprojectmaster.testnet.json
       - name: Run ci tests
         run: yarn testci
+      - name: Run near-cli tests
+        run: yarn run test:clidevdeploy
 
   workflows_macos:
     needs: workflows_ubuntu
@@ -47,3 +49,5 @@ jobs:
         run: echo "$TESTNET_MASTER_ACCOUNT_WALLET" > .near-credentials/workspaces/testnet/templateprojectmaster.testnet.json
       - name: Run ci tests
         run: yarn testci
+      - name: Run near-cli tests
+        run: yarn run test:clidevdeploy
