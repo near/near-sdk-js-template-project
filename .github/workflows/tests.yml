@@ -9,6 +9,8 @@ on:
 jobs:
   workflows_ubuntu:
     runs-on: ubuntu-latest
+    environment:
+      name: production
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v2
@@ -21,7 +23,9 @@ jobs:
       - name: Set master credentials
         env:
           TESTNET_MASTER_ACCOUNT_WALLET: ${{ secrets.TESTNET_MASTER_ACCOUNT_WALLET }}
-        run: echo "$TESTNET_MASTER_ACCOUNT_WALLET" > .near-credentials/workspaces/testnet/templateprojectmaster.testnet.json
+#          TESTNETMASTERACCOUNTWALLET: ${{ secrets.TESTNETMASTERACCOUNTWALLET }}
+#        run: echo "$TESTNET_MASTER_ACCOUNT_WALLET" > .near-credentials/workspaces/testnet/templateprojectmaster.testnet.json
+        run: echo "${#TESTNET_MASTER_ACCOUNT_WALLET}"
       - name: Run ci tests
         run: yarn testci
       - name: Run near-cli tests
