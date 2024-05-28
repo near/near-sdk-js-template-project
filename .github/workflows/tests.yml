@@ -1,11 +1,16 @@
 name: Tests
-on: push
+on:
+  pull_request:
+  push:
+    branches:
+      - master
+      - develop
+
 jobs:
-  workflows:
-    strategy:
-      matrix:
-        platform: [ubuntu-latest, macos-latest]
-    runs-on: ${{ matrix.platform }}
+  workflows_ubuntu:
+    runs-on: ubuntu-latest
+    environment:
+      name: production
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v2
@@ -15,5 +20,32 @@ jobs:
         run: yarn
       - name: Build contract
         run: yarn build
-      - name: Run tests
-        run: yarn test
+      - name: Set master credentials
+        env:
+          TESTNET_MASTER_ACCOUNT_WALLET: ${{ secrets.TESTNET_MASTER_ACCOUNT_WALLET }}
+        run: echo "$TESTNET_MASTER_ACCOUNT_WALLET" > .near-credentials/workspaces/testnet/templateprojectmaster.testnet.json
+      - name: Run ci tests
+        run: yarn testci
+      - name: Run near-cli tests
+        run: yarn run test:clidevdeploy
+
+  workflows_macos:
+    needs: workflows_ubuntu
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+        with:
+          node-version: "16"
+      - name: Install modules
+        run: yarn
+      - name: Build contract
+        run: yarn build
+      - name: Set master credentials
+        env:
+          TESTNET_MASTER_ACCOUNT_WALLET: ${{ secrets.TESTNET_MASTER_ACCOUNT_WALLET }}
+        run: echo "$TESTNET_MASTER_ACCOUNT_WALLET" > .near-credentials/workspaces/testnet/templateprojectmaster.testnet.json
+      - name: Run ci tests
+        run: yarn testci
+      - name: Run near-cli tests
+        run: yarn run test:clidevdeploy

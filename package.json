@@ -6,7 +6,13 @@
   "type": "module",
   "scripts": {
     "build": "near-sdk-js build",
-    "test": "ava"
+    "test": "yarn test:template && yarn test:testnetdeploy",
+    "test:template": "ava ./__tests__/test-template.ava.js",
+    "test:testnetdeploy": "ava ./__tests__/test-testnet-dev-deploy.ava.js",
+    "testci": "yarn testci:template && yarn testci:testnetdeploy",
+    "testci:template": "ava ./__tests__/test-template.ava.js",
+    "testci:testnetdeploy": "TESTNET_MASTER_ACCOUNT_ID='templateprojectmaster.testnet' ava ./__tests__/test-testnet-dev-deploy.ava.js",
+    "test:clidevdeploy": "bash scripts/near_cli_deploy.sh"
   },
   "author": "Near Inc <hello@nearprotocol.com>",
   "license": "Apache-2.0",
@@ -16,6 +22,7 @@
   },
   "devDependencies": {
     "ava": "^4.2.0",
-    "near-workspaces": "^3.3.0"
+    "near-workspaces": "^3.3.0",
+    "near-cli": "^4.0.13"
   }
 }
